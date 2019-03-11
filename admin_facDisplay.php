@@ -1,4 +1,9 @@
-<html lang="en">
+<?php
+include('admin_login_php2.php');
+if($login==null )
+ header('location:admin_login.php');
+?>
+ <html lang="en">
   <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">

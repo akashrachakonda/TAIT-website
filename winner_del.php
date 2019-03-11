@@ -1,3 +1,8 @@
+<?php
+include('admin_login_php2.php');
+if($login==null )
+ header('location:admin_login.php');
+?>
 <html lang="en">
   <head>
     <!-- Required meta tags -->
@@ -18,7 +23,10 @@
  $dbname = "allevents";
 
   $conn = mysqli_connect($servername, $username, $password, $dbname);
+  if(isset($_GET['b']))
   $event=$_GET['b'];
+  else
+  header("location:admin_login.php");
   $sql = "select * from winners where Event_name='$event'";
   $res = mysqli_query($conn,$sql);
                

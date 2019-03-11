@@ -1,3 +1,8 @@
+<?php
+include('admin_login_php2.php');
+if($login==null )
+ header('location:admin_login.php');
+?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -22,7 +27,10 @@
     <h1 style="margin-left:150px">Contest Details:</h1>
 
 <?php
+if(isset($_GET['x']))
 $table=$_GET['x'];
+else
+header("location:admin_login.php");
 //echo $table;
 
   echo   "<form class=jumbotron action='aboutUs_detailsSubmit.php?x=$table' method=post enctype=multipart/form-data >";

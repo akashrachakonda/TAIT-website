@@ -1,3 +1,8 @@
+<?php
+include('admin_login_php2.php');
+if($login==null )
+ header('location:admin_login.php');
+?>
 <html lang="en">
   <head>
     <!-- Required meta tags -->
@@ -21,7 +26,10 @@
   if (!$db_selected) {
       die ('Database error : ' . mysql_error());
   }
+if(isset($_GET['a']))
 $table=$_GET['a'];
+else
+header("location:admin_login.php");
   $sql = "select * from ".$table;
             $res = mysql_query($sql);
              

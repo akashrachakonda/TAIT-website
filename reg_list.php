@@ -1,3 +1,8 @@
+<?php
+include('admin_login_php2.php');
+if($login==null )
+ header('location:admin_login.php');
+?>
 <html lang="en">
   <head>
     <!-- Required meta tags -->
@@ -18,8 +23,10 @@
  $dbname = "allevents";
 
   $conn = mysqli_connect($servername, $username, $password, $dbname);
-
+if(isset($_GET['b']))
 $table=$_GET['b'];
+else
+header("location:admin_login.php");
   $sql = "select * from $table";
   $res = mysqli_query($conn,$sql);
              

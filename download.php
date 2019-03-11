@@ -4,32 +4,28 @@ if($login==null )
  header('location:admin_login.php');
 ?>
 <?php
-session_start();
 function fetch()
 {
-	
-//$table=$_GET['c'];
-//$sub=$_GET['sub'];
-	      $output = '';  
-	$conn=new mysqli("localhost","root","","events");
-//$mark=$sub.$id."marks";
-if(isset($_GET['C']))
+if(isset($_GET['c']))	
 $table=$_GET['c'];
 else
 header("location:admin_login.php");
-
-$sql="select * from ".$table;
+//$sub=$_GET['sub'];
+	      $output = '';  
+	$conn=new mysqli("localhost","root","","allevents");
+//$mark=$sub.$id."marks";
+$sql="select * from $table";
 $result=$conn->query($sql);
 if($result->num_rows>0)
 {
       while($event =$result->fetch_assoc())  
       {       
-      $output .= "<tbody >
+      $output .= "<tbody>
       <tr>
-        <td>".$event['name2']."</td>
-        <td>".$event['date2']."</td>
-        <td>".$event['duration2']." days</td>
-        <td>".$event['contest_for']."</td>
+        <td>".$event['st_roll']."</td>
+        <td>".$event['st_name']."</td>
+        <td>".$event['st_branch']."</td>
+        <td>".$event['st_gmail']."</td>
       </tr>
       
     </tbody>";  
@@ -45,10 +41,12 @@ return $output;
 	
 ?>
 <?php
-session_start();
 require_once('tcpdf/tcpdf.php');
-$table=$_GET['c'];
-$title="Completed Contest list:";
+
+$table=$_GET['b'];
+//$sub=$_GET['sub'];
+$title="Registered student list:";
+//$sname=$sub."-".$id."-"."marks.txt";
 
 $pdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
 $pdf->SetCreator(PDF_CREATOR);
@@ -72,14 +70,14 @@ $pdf->AddPage();
 $pdf->setFont('helvetica','',12);
 $content="";
 $content.= "<div class=container style=height: px;width:800px>  
-<h1 ><center>Events Conducted:</center></h1>
-<table class=table table-striped table-dark >
+<h1 ><center>Registered Students:</center></h1>
+<table class=table table-striped table-dark>
 <thead>
   <tr>
+    <th scope=col>RollNo</th>
     <th scope=col>Name</th>
-    <th scope=col>Date</th>
-    <th scope=col>Duration</th>
-    <th scope=col>Participants</th>
+    <th scope=col>Branch</th>
+    <th scope=col>Gmail</th>
   </tr>
 </thead>";  
 	  $content .= fetch();  

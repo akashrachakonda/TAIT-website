@@ -1,3 +1,8 @@
+<?php
+include('admin_login_php2.php');
+if($login==null )
+ header('location:admin_login.php');
+?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -59,7 +64,10 @@
   
 
   <?php
+  if(isset($_GET['x']))
   $database=$_GET['x'];
+  else
+  header("location:admin_login.php");
   ?>
 
 

@@ -1,3 +1,8 @@
+<?php
+include('admin_login_php2.php');
+if($login==null )
+ header('location:admin_login.php');
+?>
 <html lang="en">
   <head>
     <!-- Required meta tags -->
@@ -28,7 +33,7 @@ $count=mysql_num_rows($res);
                 
 
  echo "<div class=container style=height: px;width:800px>  
-  <h1 ><center>Faculty Details:</center></h1>
+  <h1 ><center>Magazine Details:</center></h1>
 <table class=table table-striped table-dark>
   <thead>
     <tr>
