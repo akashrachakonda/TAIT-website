@@ -90,7 +90,7 @@ a:link {
 									<li><i class="fa fa-map-marker" aria-hidden="true"></i>VMEG</li>
 								<!---	<li><i class="fa fa-phone" aria-hidden="true"></i> +(010) 221 918 811</li>-->
 									<li><i class="fa fa-envelope-o" aria-hidden="true"></i> admin@gmail.com</li>
-                                    
+									<li><button type="button" class="btn btn-primary btn-sm" style="margin-left:1100px;margin-top:-5px" onclick=location.href='logout.php'>Logout</button></li>                  
 								</ul>
 							</div>
 							
@@ -109,7 +109,7 @@ a:link {
 							<span class="icon-bar"></span>
 							<span class="icon-bar"></span>
 						</button>
-						<h1><a href="admin_main.html">ADMIN</a></h1>
+						<h1><a href="admin_main.php">ADMIN</a></h1>
 					</div>
 					<!-- navbar-header -->
 
@@ -124,15 +124,17 @@ a:link {
 					<div class="clearfix"> </div>
 				
 				
-			<div class="wrapper">
+			<div class="wrapper">	
                     <div class="box a"><a href="admin_eventselection2.php" style="color:white">ADD EVENTS TO CLUBS</a></div>
-                    <div class="box b"><a href="" style="color:white">UPDATE CALENDER</a></div>
+                    <div class="box b"><a href="calender/admin_update_calender.php" target="_blank" style="color:white">UPDATE CALENDER</a></div>
                     <div class="box c"><a href="reg_events2.php" style="color:white">REGISTERED STUDENT DETAILS</a></div>
-                    <div class="box d"><a href="file/C:/wamp/www/gallery/photowall/adminGallery.html" style="color:white">UPDATE GALLERY</a></div>
-                    <div class="box e"><a href="aboutUs_main.php" style="color:white">UPDATE CONTACT INFO</a></div>
+                    <div class="box d"><a href="Gallery-updated/adminGallery.html" style="color:white">UPDATE GALLERY</a></div>
+                    <div class="box e"><a href="aboutUs_main.php" style="color:white">UPDATE ABOUTUS INFO</a></div>
                     <div class="box f"><a href="admin_facDetSelection.php" style="color:white">UPDATE FACULTY DETAILS</a></div>
 										  <div class="box f"><a href="Magazine_selection.php" style="color:white">Upload/Remove TAIT Magazine</a></div>
 										  <div class="box f"><a href="winner_selection.php" style="color:white">Winners Declaration</a></div>
+											<div class="box f"><a href="QUIZ/dynamic_admin.html" style="color:white">Upload Quiz documents</a></div>
+          
             </div>
 		</div>
 	</div>

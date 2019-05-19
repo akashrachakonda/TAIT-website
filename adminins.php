@@ -31,7 +31,7 @@ if($login==null )
     <form class="jumbotron" action="adminins_events.php" method="post" enctype="multipart/form-data" >
   <div class="form-group">
     <label for="exampleFormControlInput1">*Contest name:</label>
-    <h6>(Contest name must be unique from other..)</h6>
+    <h6>(Contest name must be unique from other & spaces are not allowed in contest name)</h6>
     <input type="text" class="form-control" id="exampleFormControlInput1" name="f1" placeholder="" required >
   </div>
   
@@ -61,8 +61,11 @@ if($login==null )
     <label for="exampleFormControlInput1">Any contest link:</label>
     <input type="text" class="form-control" id="exampleFormControlInput1" name="f6" placeholder="insert here">
   </div>
-  
 
+  <div class="form-group">
+    <label for="exampleFormControlTextarea1">Any Mail Info:</label>
+    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"  name="f7" placeholder="write here.."></textarea>
+  </div>
   <?php
   if(isset($_GET['x']))
   $database=$_GET['x'];
@@ -71,7 +74,7 @@ if($login==null )
   ?>
 
 
-  <input type="hidden" class="form-control" id="exampleFormControlInput1" name="f7" value="<?php echo $database?>">
+  <input type="hidden" class="form-control" id="exampleFormControlInput1" name="f8" value="<?php echo $database?>">
   <span class="navbar-brand mb-0 h1">Contest image:</span> <input type="file" name="uploadfile" style="margin-left:50px">
     <br><br>
 

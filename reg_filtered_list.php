@@ -4,7 +4,7 @@ if($login==null )
  header('location:admin_login.php');
 ?>
 <html lang="en">
-  <head>  
+  <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -27,7 +27,7 @@ if(isset($_GET['b']))
 $table=$_GET['b'];
 else
 header("location:admin_login.php");
-  $sql = "select * from $table";
+  $sql = "select * from $table where op='on'";
   $res = mysqli_query($conn,$sql);
              
  
@@ -35,8 +35,8 @@ header("location:admin_login.php");
                 
 
  echo "<div class=container style=height: px;width:800px>  
-  <h1 ><center>Registered Students:</center></h1>
-  <a href=download.php?c=".$table." >PDF Format</a>
+  <h1 ><center>Registered Students(Filtered):</center></h1>
+  <a href=download2.php?c=".$table." >PDF Format</a>
 <table class=table table-striped table-dark>
   <thead>
     <tr>

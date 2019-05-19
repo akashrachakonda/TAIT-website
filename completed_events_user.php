@@ -1,8 +1,4 @@
-<?php
-include('admin_login_php2.php');
-if($login==null )
- header('location:admin_login.php');
-?>
+
 <html lang="en">
   <head>
     <!-- Required meta tags -->
@@ -29,7 +25,7 @@ if($login==null )
 if(isset($_GET['a']))
 $table=$_GET['a'];
 else
-header("location:admin_login.php");
+header("location:index1.html");
   $sql = "select * from ".$table;
             $res = mysql_query($sql);
              
@@ -49,9 +45,8 @@ header("location:admin_login.php");
       <th scope=col>Participants</th>
     </tr>
   </thead>";
-  echo "<a href=completed_events2_download.php?c=".$table.">PDF Format</a>";
-
-if(mysql_num_rows($res)>0)
+  echo "<a href=completed_events2_download2.php?c=".$table.">PDF Format</a>";
+  if(mysql_num_rows($res)>0)
 {
 
   while ($event = mysql_fetch_array($res)){
@@ -69,7 +64,8 @@ if(mysql_num_rows($res)>0)
   </tbody>";
   }
 }
-
+else
+echo "<h2>No Completed events available..</h2>"
   ?>
   
 </table>

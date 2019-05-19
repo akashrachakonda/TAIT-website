@@ -12,7 +12,7 @@ if($login==null )
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-    <title>Events</title>
+    <title>All Events</title>
     
   </head>
  
@@ -70,7 +70,7 @@ echo "
 // c.onclick=myfunction();
 
  function myFunction(x,p) {
-  if(confirm("Pressing OK will permanently Delete the Event details from Database"))
+  if(confirm("Pressing OK will permanently Delete the Event details from Database but not the Registered student details of this event if available"))
   window.location.assign("Remove_events.php?y="+p);
   else
   window.location.assign("All_events_admin.php");

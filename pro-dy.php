@@ -55,18 +55,16 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	<nav aria-label="breadcrumb">
 		<ol class="breadcrumb">
 			<li class="breadcrumb-item">
-				<a href="modifiednav.html">Home</a>
+				<a href="index1.html">Home</a>
 			</li>
 			<li class="breadcrumb-item active" aria-current="page">Programming  Club</li>
 			<li class="breadcrumb-item">
-				<a href="completed_events.php?a=pro_completed" target="_blank">Completed contests</a>
+				<a href="completed_events_user.php?a=pro_completed" target="_blank">Completed contests</a>
 			</li>
 		</ol>
 	</nav>
-	<!-- breadcrumb -->
-	<!-- //banner -->
-
-	<!-- course-->
+	
+	
 	<title>Programming Club</title>
 	<div class="course-w3ls py-5" style="float:'left" >
 		<div class="container py-xl-5 py-lg-3">
@@ -74,6 +72,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				<span class="font-weight-bold">Programming</span>
 			</h3>
             <?php
+			$ref=0;
 			//session_start();
             //$_SESSION['database']="pro_completed";
             $link = mysql_connect('localhost', 'root', '');
@@ -104,7 +103,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
             
             if($check>=0)
             {
-               // echo "bye";
+			$GLOBALS['ref']=1;
+			
+            // echo "bye";
             //echo "<div style=clear:both>";
 			echo "<div class='row cource-list-agile pt-4' id='id1' >";
 			echo "<div class='col-lg-7 agile-course-main'>";
@@ -147,15 +148,19 @@ License URL: http://creativecommons.org/licenses/by/3.0/
             }
             else
             {
+				//echo "hello";
                 $sql3 = "insert into pro_completed(name2,date2,duration2,contest_for) values('$event[name]','$event[start_date]','$event[duration]','$event[contest_for]')";
-                $res= mysql_query($sql3);
+				$res= mysql_query($sql3);
+				$sql2="delete from pro_events where end_date="."'$event[end_date]'";
+				//echo $sql2;
+				$res2= mysql_query($sql2);
 
 
             }
 		}
 	 }
 				 
-		else
+		if($GLOBALS['ref']!=1)
 		echo "<h1 style=margin-left:250px>Events will be conducted very soon...</h1>";
 				 
 				 

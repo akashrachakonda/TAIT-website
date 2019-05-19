@@ -56,11 +56,11 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	<nav aria-label="breadcrumb">
 		<ol class="breadcrumb">
 			<li class="breadcrumb-item">
-				<a href="modifiednav.html">Home</a>
+				<a href="index1.html">Home</a>
 			</li>
 			<li class="breadcrumb-item active" aria-current="page">Cultural Club</li>
 			<li class="breadcrumb-item">
-				<a href="completed_events.php?a=cul_completed" target="_blank">Completed contests</a>
+				<a href="completed_events_user.php?a=cul_completed" target="_blank">Completed contests</a>
 			</li>
 		</ol>
 	</nav>
@@ -71,9 +71,10 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	<div class="course-w3ls py-5" style="float:'left" >
 		<div class="container py-xl-5 py-lg-3">
 			<h3 class="title text-capitalize font-weight-light text-dark text-center mb-sm-5 mb-4">Club -
-				<span class="font-weight-bold">Cuntural</span>
+				<span class="font-weight-bold">Cultural</span>
 			</h3>
             <?php
+			$ref=0;
 			//session_start();
             //$_SESSION['database']="cul_completed";
             $link = mysql_connect('localhost', 'root', '');
@@ -104,6 +105,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
             
             if($check>=0)
             {
+				$GLOBALS['ref']=1;
                // echo "bye";
             //echo "<div style=clear:both>";
 			echo "<div class='row cource-list-agile pt-4' id='id1' >";
@@ -149,13 +151,16 @@ License URL: http://creativecommons.org/licenses/by/3.0/
             {
 				//echo "hello";
                 $sql2 = "insert into cul_completed(name2,date2,duration2,contest_for) values('$event[name]','$event[start_date]','$event[duration]','$event[contest_for]')";
-                $res= mysql_query($sql2);
+				$res= mysql_query($sql2);
+				$sql2="delete from cul_events where end_date="."'$event[end_date]'";
+				//echo $sql2;
+				$res2= mysql_query($sql2);
 
             }
 		}
 	}
          
-		else
+	if($GLOBALS['ref']!=1)
 		echo "<h1 style=margin-left:250px>Events will be conducted very soon...</h1>";
 
 

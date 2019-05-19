@@ -56,11 +56,11 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	<nav aria-label="breadcrumb">
 		<ol class="breadcrumb">
 			<li class="breadcrumb-item">
-				<a href="modifiednav.html">Home</a>
+				<a href="index1.html">Home</a>
 			</li>
 			<li class="breadcrumb-item active" aria-current="page">Communication Club</li>
 			<li class="breadcrumb-item">
-				<a href="completed_events.php?a=com_completed" target="_blank">Completed contests</a>
+				<a href="completed_events_user.php?a=com_completed" target="_blank">Completed contests</a>
 			</li>
 		</ol>
 	</nav>
@@ -74,6 +74,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				<span class="font-weight-bold">Communication</span>
 			</h3>
             <?php
+			$ref=0;
 			//session_start();
             //$_SESSION['database']="com_completed";
             $link = mysql_connect('localhost', 'root', '');
@@ -108,11 +109,12 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			
             if($check>=0)
             {
+				$GLOBALS['ref']=1;
                // echo "bye";
             //echo "<div style=clear:both>";
 			echo "<div class='row cource-list-agile pt-4' id='id1' >";
 			echo "<div class='col-lg-7 agile-course-main'>";
-             echo "<div class=w3ls-cource-first style='height:300px'>";
+             echo "<div class=w3ls-cource-first style='height:320px'>";
             
 						echo "<img src=images/1.png  class=img-fluid img-poiscour mx-auto d-block mt-2 style='margin-left:250px'></img>";
 						echo "<div class=px-md-5 px-4  pb-md-5 pb-4>";
@@ -126,7 +128,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 								echo "<li>";
 									echo "<i class=fas fa-users mr-3></i>".$event['contest_for']."</li>";
 									echo "<li>";
-									echo "<br>";
+									//echo "<br>";
 									$p=strcmp($event['reg_link'],"0");
 									if($p!=0)
 									{
@@ -145,7 +147,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 					echo "</div>";
                 echo "</div>";
 				echo "<div class=col-lg-5 agile-course-main-2 mt-4>";
-                echo "<img src=images2/".$event['image']." class=img-fluid style='margin-left:-50px;margin-top:10px; width:400px;height:280px'></img>"."<br>";
+                echo "<img src=images2/".$event['image']." class=img-fluid style='margin-left:-50px;margin-top:10px; width:400px;height:300px'></img>"."<br>";
 
                 
                 echo "</div>";
@@ -156,13 +158,16 @@ License URL: http://creativecommons.org/licenses/by/3.0/
             {
                 $sql1 = "insert into com_completed(name2,date2,duration2,contest_for) values('$event[name]','$event[start_date]','$event[duration]','$event[contest_for]')";
 				$res= mysql_query($sql1);
+				$sql2="delete from com_events where end_date="."'$event[end_date]'";
+				//echo $sql2;
+				$res2= mysql_query($sql2);
 				//echo $res;	
 
 
 			}
 		}
 	}
-		else
+	if($GLOBALS['ref']!=1)
 		     echo "<h1 style=margin-left:250px>Events will be conducted very soon...</h1>";
 			
 	

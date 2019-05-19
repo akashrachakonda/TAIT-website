@@ -17,7 +17,7 @@ $sql2="delete from $table where name='$name'";
 $result2 = mysqli_query($conn, $sql2);
 
 
-header("Location:reg_events.php");
+header("Location:reg_events2.php");
 
 
 ?>

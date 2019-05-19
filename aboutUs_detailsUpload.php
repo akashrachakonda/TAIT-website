@@ -1,8 +1,3 @@
-<?php
-include('admin_login_php2.php');
-if($login==null )
- header('location:admin_login.php');
-?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -13,7 +8,7 @@ if($login==null )
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-    <title>Update Faculty</title>
+    <title>Update Details</title>
   </head>
   <body>
 
@@ -27,18 +22,24 @@ if($login==null )
     <h1 style="margin-left:150px">Contest Details:</h1>
 
 <?php
-if(isset($_GET['x']))
 $table=$_GET['x'];
-else
-header("location:admin_login.php");
+$year1=$_GET['y'];
+//echo $year1;
 //echo $table;
 
   echo   "<form class=jumbotron action='aboutUs_detailsSubmit.php?x=$table' method=post enctype=multipart/form-data >";
   ?>
+   <div class="form-group">
+    <label for="exampleFormControlInput1">Faculty/Student ID:</label>
+    <input type="text" class="form-control" id="exampleFormControlInput1" name="f6" placeholder="" required>
+  </div>
+
+
   <div class="form-group">
     <label for="exampleFormControlInput1">Faculty/Student Name:</label>
     <input type="text" class="form-control" id="exampleFormControlInput1" name="f1" placeholder="" required>
   </div>
+
   <div class="form-group">
     <label for="exampleFormControlSelect1">Designation:</label>
     <select class="form-control" id="exampleFormControlSelect1" name="f2" required>
@@ -60,8 +61,9 @@ header("location:admin_login.php");
   </div>
 
  
-  <span class="navbar-brand mb-0 h1">Faculty image:</span> <input type="file" name="uploadfile" style="margin-left:50px" requied>
+  <span class="navbar-brand mb-0 h1">Faculty/student image:</span><input type="file" name="uploadfile" style="margin-left:50px" requied>
     <br><br>
+    <input type="hidden" value="<?php echo $year1 ?>" name="f5">
    <button type="submit" class="btn btn-primary" style="margin-left:200px" >Submit</button>
 </form>
 </div>

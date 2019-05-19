@@ -13,7 +13,8 @@ $date=$_POST["f3"];
 $dur=$_POST["f4"];
 $cont=$_POST["f5"];
 $Any_link=$_POST["f6"];
-$database=$_POST["f7"];
+$mail_info=$_POST["f7"];
+$database=$_POST["f8"];
 $img=$_FILES["uploadfile"]["name"];
 $tempname = $_FILES["uploadfile"]["tmp_name"];
 $folder = "images2/".$img;
@@ -34,21 +35,21 @@ if($res==0)
 {
 
 $link="registration.php?a=".$name;
-$sql = "INSERT INTO $database(name,description,start_date,duration,contest_for,image,end_date,reg_link,link) VALUES('$name','$des','$date','$dur','$cont','$img','$newDate','$link','$Any_link')";
+$sql = "INSERT INTO $database(name,description,start_date,duration,contest_for,image,end_date,reg_link,link,mail) VALUES('$name','$des','$date','$dur','$cont','$img','$newDate','$link','$Any_link','$mail_info')";
 $ss=mysqli_query($conn, $sql);
-$sql2="create table $name(st_roll varchar(10) primary key,st_name varchar(50),st_gmail varchar(50),st_branch varchar(10))";
+$sql2="create table $name(st_roll varchar(10) primary key,st_name varchar(50),st_gmail varchar(50),st_branch varchar(10),op varchar(5))";
 $ex=mysqli_query($conn2, $sql2);
 $sql3="insert into event_names(name) values('$name')";
 $exe=mysqli_query($conn2, $sql3);
-}
+}       
 else
 {
-    $sql = "INSERT INTO $database(name,description,start_date,duration,contest_for,image,end_date,reg_link,link) VALUES('$name','$des','$date','$dur','$cont','$img','$newDate','0','$Any_link')";
+    $sql = "INSERT INTO $database(name,description,start_date,duration,contest_for,image,end_date,reg_link,link,mail) VALUES('$name','$des','$date','$dur','$cont','$img','$newDate','0','$Any_link','0')";
 $ss=mysqli_query($conn, $sql);
 }
 //echo $ss;
 mysqli_close($conn);
-
+    
 ?>
 <script>
 var p="<?php echo $database;?>";

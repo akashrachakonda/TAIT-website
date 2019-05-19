@@ -14,7 +14,7 @@ header("location:admin_login.php");
 	      $output = '';  
 	$conn=new mysqli("localhost","root","","allevents");
 //$mark=$sub.$id."marks";
-$sql="select * from $table ";
+$sql="select * from $table where op='on'";
 $result=$conn->query($sql);
 if($result->num_rows>0)
 {
@@ -70,7 +70,7 @@ $pdf->AddPage();
 $pdf->setFont('helvetica','',12);
 $content="";
 $content.= "<div class=container style=height: px;width:800px>  
-<h1 ><center>Registered Students:</center></h1>
+<h1 ><center>Registered Students(Filtered):</center></h1>
 <table class=table table-striped table-dark>
 <thead>
   <tr>
@@ -86,9 +86,5 @@ $content.= "<div class=container style=height: px;width:800px>
 	  ob_end_clean();
 
       $pdf->Output("$table", 'I');
-
-
-
-
 
 ?>
