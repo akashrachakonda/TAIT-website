@@ -1,0 +1,17 @@
+<?php
+$link = mysql_connect('localhost', 'root', '');
+if (!$link) {
+    die('Not connected : ' . mysql_error());
+}
+$db_selected = mysql_select_db('gallery', $link);
+if (!$db_selected) {
+    die ('Database error : ' . mysql_error());
+}
+        $sql = "select * from images";
+       
+        $result = mysql_query($sql) or die("Invalid query: "  .mysql_error());
+    
+        while ($pic = mysql_fetch_array($result)){
+        echo "<img src='$pic[path]' width='300'  height='300' />" ;
+        }
+?>
